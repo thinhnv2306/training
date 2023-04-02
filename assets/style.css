@@ -1,0 +1,37 @@
+.container {
+  width: 500px;
+  margin: 50px auto;
+  border: 1px solid #009dff;
+  border-radius: 10px;
+  padding: 50px 20px;
+}
+.container h3 {
+  text-align: center;
+  font-size: 36px;
+  margin: 0 0 20px 0;
+}
+
+.form-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-input label {
+  display: inline-block;
+  width: 20%;
+  font-size: 18px;
+}
+
+.form-input input {
+  width: calc(80% - 20px);
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #009dff;
+}
+
+.form-input input:focus {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #009dff;
+  border-radius: 0;
+}
