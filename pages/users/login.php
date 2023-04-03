@@ -91,19 +91,23 @@ if (isset($_POST["submit"])) {
                 <div class="form-input">
                     <?php if (isset($error["err_id"]) && !empty($error["err_id"])) {
     echo '<p class="error">' . $error["err_id"] . '</p>';}?>
+                    <p class="error-message error-id"></p>
                     <!-- <label for="">Username</label> -->
                     <div class="input-field">
                         <i class="fa-solid fa-user"></i>
-                        <input id="username" name="username" type="text" placeholder="Username" autocomplete="off">
+                        <input id="username" name="username" type="text" placeholder="Username" autocomplete="off"
+                            onfocusout="checkValidate()">
                     </div>
                 </div>
                 <div class="form-input">
                     <?php if (isset($error["err_pass"]) && !empty($error["err_pass"])) {
     echo '<p class="error">' . $error["err_pass"] . '</p>';}?>
+                    <p class="error-message error-password"></p>
                     <!-- <label for="">Password</label> -->
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
-                        <input id="password" name="password" type="password" placeholder="Password" autocomplete="off">
+                        <input id="password" name="password" type="password" placeholder="Password" autocomplete="off"
+                            onfocusout="checkValidate()">
                     </div>
                 </div>
                 <div class="submit-reset">

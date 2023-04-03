@@ -49,7 +49,8 @@
   outline: none;
 }
 
-.error {
+.error,
+.error-message {
   color: red;
 }
 
