@@ -1,7 +1,14 @@
+:root {
+  --green-color: #4caf50;
+}
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
 .container {
-  width: 500px;
+  width: 600px;
   margin: 50px auto;
-  border: 1px solid #009dff;
+  border: 1px solid var(--green-color);
   border-radius: 10px;
   padding: 50px 20px;
 }
@@ -9,6 +16,7 @@
   text-align: center;
   font-size: 36px;
   margin: 0 0 20px 0;
+  color: var(--green-color);
 }
 
 .form-input {
@@ -17,21 +25,60 @@
 }
 
 .form-input label {
-  display: inline-block;
+  display: none;
   width: 20%;
   font-size: 18px;
 }
 
-.form-input input {
+.input-field {
+  border-bottom: 2px solid var(--green-color);
   width: calc(80% - 20px);
+}
+
+.form-input i {
+  color: rgba(128, 128, 128, 0.589);
+}
+
+.form-input input {
   line-height: 30px;
-  border-radius: 5px;
-  border: 1px solid #009dff;
+  border: none;
+  font-size: 18px;
 }
 
 .form-input input:focus {
   outline: none;
-  border: 0;
-  border-bottom: 1px solid #009dff;
-  border-radius: 0;
+}
+
+.error {
+  color: red;
+}
+
+.submit-reset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-btn {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 4px #ccc;
+}
+
+.reset-pass {
+  margin-top: 20px;
+  color: var(--green-color);
+  font-size: 20px;
+  text-decoration: none;
 }

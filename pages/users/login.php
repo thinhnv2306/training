@@ -1,5 +1,12 @@
 <?php
+session_start();
+
 require "../../config/database.php";
+if (isset($_SESSION["sess_user"])) {
+
+    header("Location: ../home.php");
+}
+
 if (isset($_POST["submit"])) {
     $error = array(
         "err_id" => "",
@@ -7,38 +14,55 @@ if (isset($_POST["submit"])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     if ($username != '' && $password != '') {
-        $query = mysqli_query($con, "SELECT * FROM admins WHERE login_id ='" . $username . "' AND password = '" . $password . "'");
-        $numrows = mysqli_num_rows($query);
-        if ($numrows > 0) {
-            while ($row = mysqli_fetch_assoc($query)) {
-                $db_username = $row['login_id'];
-                $db_password = $row['password'];
+        if ((strlen($username) > 3) && (strlen($password) > 5)) {
+            $query = mysqli_query($con, "SELECT * FROM admins WHERE login_id ='" . $username . "' AND password = '" . $password . "'");
+            $numrows = mysqli_num_rows($query);
+            if ($numrows > 0) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $db_username = $row['login_id'];
+                    $db_password = $row['password'];
+                }
+                if ($username == $db_username && $password == $db_password) {
+
+                    $_SESSION['sess_user'] = $username;
+                    header("Location: ../home.php");
+                }
+            } else {
+                $error = array(
+                    "err_id" => "Incorrect username or password!",
+                    "err_pass" => "");
             }
-            if ($username == $db_username && $password == $db_password) {
-                session_start();
-                $_SESSION['sess_user'] = $username;
-                header("Location: ../common/home.php");
-            }
-        } else {
-            echo "Người dùng hoặc mật khẩu không đúng";
+        } elseif ((strlen($username) < 4) && (strlen($password) > 5)) {
+            $error = array(
+                "err_id" => "Please input username at least 4 characters",
+                "err_pass" => "");
+        } elseif ((strlen($username) > 3) && (strlen($password) < 6)) {
+            $error = array(
+                "err_id" => "",
+                "err_pass" => "Please input password at least 6 characters");
+        } elseif ((strlen($username) < 4) && (strlen($password) < 6)) {
+            $error = array(
+                "err_id" => "Please input username at least 4 characters",
+                "err_pass" => "Please input password at least 6 characters");
         }
 
     } elseif ($username == '' && $password == '') {
         $error = array(
-            "err_id" => "Hãy nhập login id",
-            "err_pass" => "Hãy nhập password");
+            "err_id" => "Username can't be blank. Please input!",
+            "err_pass" => "Password can't be blank. Please input!");
         // header("Location: login.php");
     } elseif ($username == '' && $password != '') {
         $error = array(
-            "err_id" => "Hãy nhập login id",
+            "err_id" => "Username can't be blank. Please input!",
             "err_pass" => "");
-    } elseif ($password == '' && $username != '') {
+    } elseif ($username != '' && $password == '') {
         $error = array(
             "err_id" => "",
-            "err_pass" => "Hãy nhập password");
+            "err_pass" => "Password can't be blank. Please input!");
     }
 } else {
-    $error = array();
+    $error = array("err_id" => "",
+        "err_pass" => "");
 }
 ?>
 
@@ -50,6 +74,12 @@ if (isset($_POST["submit"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 
@@ -59,27 +89,34 @@ if (isset($_POST["submit"])) {
         <div class="form-login">
             <form action="<?php $_SERVER["PHP_SELF"];?>" method="post">
                 <div class="form-input">
-                    <?php
-if (isset($error["err_id"])) {
+                    <?php if (isset($error["err_id"]) && !empty($error["err_id"])) {
     echo '<p class="error">' . $error["err_id"] . '</p>';}?>
-                    <label for="">Người dùng</label>
-                    <input name="username" type="text" placeholder="Tên người dùng" autocomplete="off">
+                    <!-- <label for="">Username</label> -->
+                    <div class="input-field">
+                        <i class="fa-solid fa-user"></i>
+                        <input id="username" name="username" type="text" placeholder="Username" autocomplete="off">
+                    </div>
                 </div>
                 <div class="form-input">
-                    <?php
-if (isset($error["err_pass"])) {
-    echo '<p class="error">' . $error["err_pass"] . '</p>';
-}?>
-                    <label for="">Mật khẩu</label>
-                    <input name="password" type="password" placeholder="Mật khẩu" autocomplete="off">
+                    <?php if (isset($error["err_pass"]) && !empty($error["err_pass"])) {
+    echo '<p class="error">' . $error["err_pass"] . '</p>';}?>
+                    <!-- <label for="">Password</label> -->
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input id="password" name="password" type="password" placeholder="Password" autocomplete="off">
+                    </div>
                 </div>
-                <div>
-                    <a href="reset_password.php">Quên mật khẩu</a>
-                    <input type="submit" value="Đăng nhập" name="submit" />
+                <div class="submit-reset">
+                    <input class="submit-btn" type="submit" value="Login" name="submit" />
+                    <a class="reset-pass" href="reset_password.php">Forgot Password?</a>
+
                 </div>
             </form>
         </div>
     </div>
+    <script src="../../assets/main.js">
+
+    </script>
 </body>
 
 </html>
