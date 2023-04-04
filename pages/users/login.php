@@ -1,10 +1,9 @@
 <?php
 session_start();
-
 require "../../config/database.php";
-if (isset($_SESSION["sess_user"])) {
 
-    header("Location: ../home.php");
+if (isset($_SESSION["sess_user"])) {
+    header("Location: ../../index.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -23,9 +22,10 @@ if (isset($_POST["submit"])) {
                     $db_password = $row['password'];
                 }
                 if ($username == $db_username && $password == $db_password) {
-
                     $_SESSION['sess_user'] = $username;
-                    header("Location: ../home.php");
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $_SESSION['login_time'] = date('Y-m-d H:i');
+                    header("Location: ../../index.php");
                 }
             } else {
                 $error = array(
@@ -66,7 +66,6 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -80,7 +79,7 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <title>EVENT KANRI</title>
 </head>
 
 <body>
@@ -89,25 +88,23 @@ if (isset($_POST["submit"])) {
         <div class="form-login">
             <form action="<?php $_SERVER["PHP_SELF"];?>" method="post">
                 <div class="form-input">
-                    <?php if (isset($error["err_id"]) && !empty($error["err_id"])) {
-    echo '<p class="error">' . $error["err_id"] . '</p>';}?>
-                    <p class="error-message error-id"></p>
+                    <?php if (isset($error["err_id"]) && !empty($error["err_id"])) {echo '<p class="error">' . $error["err_id"] . '</p>';}?>
+                    <p id="error-id" class="error-message"></p>
                     <!-- <label for="">Username</label> -->
                     <div class="input-field">
                         <i class="fa-solid fa-user"></i>
                         <input id="username" name="username" type="text" placeholder="Username" autocomplete="off"
-                            onfocusout="checkValidate()">
+                            value="<?php echo $_POST["username"] ?? '' ?>" onblur="checkValidateLogin()">
                     </div>
                 </div>
                 <div class="form-input">
-                    <?php if (isset($error["err_pass"]) && !empty($error["err_pass"])) {
-    echo '<p class="error">' . $error["err_pass"] . '</p>';}?>
-                    <p class="error-message error-password"></p>
+                    <?php if (isset($error["err_pass"]) && !empty($error["err_pass"])) {echo '<p class="error">' . $error["err_pass"] . '</p>';}?>
+                    <p id="error-password" class="error-message"></p>
                     <!-- <label for="">Password</label> -->
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
                         <input id="password" name="password" type="password" placeholder="Password" autocomplete="off"
-                            onfocusout="checkValidate()">
+                            onblur="checkValidateLogin()">
                     </div>
                 </div>
                 <div class="submit-reset">
@@ -119,7 +116,7 @@ if (isset($_POST["submit"])) {
         </div>
     </div>
     <script src="../../assets/main.js">
-
+    // Check Login//
     </script>
 </body>
 

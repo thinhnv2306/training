@@ -1,13 +1,15 @@
-<?php session_start();
+<?php
+session_start();
 
 ?>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="../../assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -18,16 +20,17 @@
 </head>
 
 <body>
-    <?php
-if (!isset($_SESSION['sess_user'])) {
-    header("Location: pages/users/login.php");
-} else {
-    include "pages/home.php";
-}?>
-
-<script src="/assets/main.js">
-    // Check Login//
-    </script>
+    <div class="container">
+        <h3>Reset Password</h3>
+        <form action="">
+            <div class="reset-field">
+                <span>Username</span>
+                <input type="text" id="username" class="username-reset" placeholder="Input username to reset"
+                    onblur="checkValidate()">
+            </div>
+            <input class="reset-btn" type="submit" value="Reset Password">
+        </form>
+    </div>
 </body>
 
 </html>

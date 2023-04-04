@@ -32,7 +32,7 @@
 
 .input-field {
   border-bottom: 2px solid var(--green-color);
-  width: calc(80% - 20px);
+  width: calc(100% - 20px);
 }
 
 .form-input i {
@@ -52,6 +52,7 @@
 .error,
 .error-message {
   color: red;
+  display: block;
 }
 
 .submit-reset {
@@ -82,4 +83,97 @@
   color: var(--green-color);
   font-size: 20px;
   text-decoration: none;
+}
+
+/* HOME CSS */
+
+.wrapper {
+  min-height: 400px;
+  width: 960px;
+  margin: 50px auto;
+  border: 1px solid #4caf50;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  margin: 0 50px 60px 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-info {
+}
+
+.logout {
+  margin-left: 200px;
+  margin-top: 30px;
+}
+
+.logout a {
+  display: block;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.home-tbl {
+  width: 90%;
+  height: 120px;
+}
+
+.home-tbl,
+th {
+  margin-left: 50px;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+th {
+  font-size: 20px;
+  height: 30px;
+}
+
+td {
+  border-left: 1px solid #000;
+  text-align: center;
+  height: 30px;
+}
+
+/* RESET PASSWORD */
+.reset-field {
+  margin-bottom: 30px;
+}
+
+.username-reset {
+  border: none;
+  border-bottom: 2px solid var(--green-color);
+  width: calc(100% - 20px);
+  line-height: 40px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.username-reset:focus {
+  outline: none;
+}
+
+.reset-btn {
+  width: 180px;
+  height: 50px;
+  font-size: 16px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
 }
