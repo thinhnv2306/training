@@ -43,6 +43,7 @@
   line-height: 30px;
   border: none;
   font-size: 18px;
+  width: 90%;
 }
 
 .form-input input:focus {
@@ -167,7 +168,7 @@ td {
   outline: none;
 }
 
-.reset-btn {
+#reset-btn {
   width: 180px;
   height: 50px;
   font-size: 16px;
@@ -176,4 +177,5 @@ td {
   border: none;
   border-radius: 10px;
   text-transform: uppercase;
+  cursor: pointer;
 }

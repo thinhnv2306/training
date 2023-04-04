@@ -57,4 +57,24 @@ function checkValidateLogin() {
 }
 
 
-function checkValidateReset() {}
+function checkValidateReset() {
+    var username = document.getElementById("username").value;
+    var error_name = document.getElementById("error_name");
+    var reset_btn = document.getElementById("reset-btn");
+    if (username != '') {
+        if (username.length < 4) {
+            error_name.innerText = "Please input username at least 4 characters";
+        } else {
+            error_name.innerText = "";
+        }
+    } else {
+        error_name.innerText = "Username can't be blank. Please input!"
+    }
+    if (error_name.innerText != '') {
+        reset_btn.disabled = true;
+        reset_btn.style = "opacity: 0.5; cursor: default";
+    } else {
+        reset_btn.disabled = false;
+        reset_btn.style = "opacity: 1; cursor: pointer";
+    }
+}
