@@ -3,11 +3,14 @@ session_start();
 require "../../config/database.php";
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
-    $query = mysqli_query($con, "UPDATE admins SET reset_password_token=" . "'" . microtime() . "'" . " WHERE login_id ='" . $username . "'");
-    if (mysqli_num_rows($query) > 0) {
+    $random_time = microtime();
+    $sql = "UPDATE admins SET reset_password_token = '" . $random_time . "' WHERE login_id ='" . $username . "'";
+    $query = mysqli_query($con, $sql);
+    if (mysqli_affected_rows($con)) {
         $message = "Request to reset password successfully";
+        $username = "";
     } else {
-        $message = "Request to reset password unsuccessfully";
+        $err_message = "Request to reset password unsuccessfully. </br>Please re-check your input username or internet connection.";
     }
 }
 ?>
@@ -33,15 +36,18 @@ if (isset($_POST["submit"])) {
         <h3>Reset Password</h3>
         <form action="<?php $_SERVER["PHP_SELF"];?>" method="POST">
             <div class="reset-field">
-                <?php if (isset($message)) {echo '<p class="message">' . $message . '</p>';}?>
+                <?php if (isset($message)) {echo '<p class="message">' . $message . '</p>';} elseif (isset($err_message)) {echo '<p class="err_message">' . $err_message . '</p>';}?>
 
                 <p id="error_name" class="error-message"></p>
                 <span>Username</span>
                 <input type="text" id="username" class="username-reset" name="username"
-                    placeholder="Input username to reset" onblur="checkValidateReset()">
+                    placeholder="Input username to reset" onkeyup="checkValidateReset()"
+                    value=<?php if (isset($username)) {echo $username;}?>>
             </div>
             <input id="reset-btn" type="submit" value="Reset Password" name="submit">
+
         </form>
+        <a class="backlogin-btn" href="/index.php">Back to Login</a>
     </div>
 
     <script src="../../assets/main.js">

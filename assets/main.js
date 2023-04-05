@@ -61,6 +61,7 @@ function checkValidateReset() {
     var username = document.getElementById("username").value;
     var error_name = document.getElementById("error_name");
     var reset_btn = document.getElementById("reset-btn");
+
     if (username != '') {
         if (username.length < 4) {
             error_name.innerText = "Please input username at least 4 characters";
