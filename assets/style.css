@@ -68,7 +68,7 @@
   height: 50px;
   font-size: 20px;
   color: white;
-  background-color: #4caf50;
+  background-color: var(--green-color);
   border: none;
   border-radius: 10px;
   text-transform: uppercase;
@@ -92,7 +92,7 @@
   min-height: 500px;
   width: 1200px;
   margin: 50px auto;
-  border: 1px solid #4caf50;
+  border: 1px solid var(--green-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -122,7 +122,7 @@
   text-decoration: none;
   font-size: 16px;
   color: white;
-  background-color: #4caf50;
+  background-color: var(--green-color);
   border: none;
   border-radius: 5px;
   text-transform: uppercase;
@@ -196,4 +196,40 @@ td {
   color: var(--green-color);
   font-size: 18px;
   font-weight: 400;
+}
+
+.list-reset {
+  border: 1px solid #000;
+}
+
+.password-input {
+  line-height: 30px;
+  font-size: 18px;
+  width: 90%;
+}
+
+#password-input:focus {
+  outline: none;
+}
+
+#reset-pass-btn {
+  display: block;
+  width: 80px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--green-color);
+  border-radius: 5px;
+  border: none;
+}
+
+.error_pass {
+  color: red;
+  text-align: left;
 }

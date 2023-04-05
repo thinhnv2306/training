@@ -4,6 +4,9 @@ require "config/database.php";
 $query = mysqli_query($con, "SELECT * FROM admins WHERE reset_password_token !=''");
 $all_users = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
+if (isset($_POST["submit"])) {
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +14,7 @@ $all_users = mysqli_fetch_all($query, MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="/assets/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -56,13 +59,17 @@ $all_users = mysqli_fetch_all($query, MYSQLI_ASSOC);
             </tr>
 
             <?php $i = 1;foreach ($all_users as $user) {?>
-            <tr>
-                <form action="<?php $_SERVER["PHP_SELF"];?>">
+            <tr class="list-reset">
+                <form action="<?php $_SERVER["PHP_SELF"];?>" method="POST">
                     <td><?php echo $i++ ?></td>
                     <td><?php echo $user["login_id"] ?></td>
-                    <td><?php echo '<input id="password" name="password" type="password" placeholder="Password" autocomplete="off"
-                            onblur="checkValidateInputPass()">' ?></td>
-                    <td><?php echo '<a id="reset-pass-btn" href="">Reset</a>' ?></td>
+                    <td>
+
+                        <?php echo '<p class="error_pass"></p> <input class="password-input" name="password" type="password" placeholder="Password" autocomplete="off"
+                            onblur="checkValidateInputPass(event)">' ?>
+                    </td>
+                    <td><?php echo '<input id="reset-pass-btn" type="submit" value="Reset" name="reset-btn">' ?>
+                    </td>
                 </form>
             </tr>
             <?php }?>
@@ -70,7 +77,7 @@ $all_users = mysqli_fetch_all($query, MYSQLI_ASSOC);
         </table>
 
     </div>
-
+    <script src="assets/main.js"></script>
 </body>
 
 </html>

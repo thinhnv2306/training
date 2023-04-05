@@ -79,3 +79,27 @@ function checkValidateReset() {
         reset_btn.style = "opacity: 1; cursor: pointer";
     }
 }
+
+function checkValidateInputPass(event) {
+    console.log(event.target);
+    var password = document.getElementsByClassName("password-input").value;
+    var error_pass = document.getElementsByClassName("error_pass");
+    var reset_btn = document.getElementById("reset-pass-btn");
+
+    if (password != '') {
+        if (password.length < 6) {
+            error_pass.innerText = "Please input password at least 6 characters";
+        } else {
+            error_pass.innerText = "";
+        }
+    } else {
+        error_pass.innerText = "Password can't be blank. Please input!"
+    }
+    if (error_pass.innerText != '') {
+        reset_btn.disabled = true;
+        reset_btn.style = "opacity: 0.5; cursor: default";
+    } else {
+        reset_btn.disabled = false;
+        reset_btn.style = "opacity: 1; cursor: pointer";
+    }
+}
