@@ -25,7 +25,7 @@ if (!isset($_SESSION['sess_user'])) {
     include "pages/home.php";
 }?>
 
-<script src="/assets/main.js">
+    <script src="/assets/main.js">
     // Check Login//
     </script>
 </body>
