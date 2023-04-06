@@ -1,5 +1,7 @@
 <?php
-
+require "../../config/database.php";
+$query = mysqli_query($con, "SELECT * FROM events ORDER BY id DESC");
+$all_events = mysqli_fetch_all($query, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +35,10 @@
                 <th>Action</th>
             </tr>
             <tr>
-                abcdef
+                <?php foreach ($all_events as $key => $event) {?>
+
+
+                <?php }?>
             </tr>
         </table>
 
