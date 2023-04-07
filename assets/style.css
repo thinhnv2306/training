@@ -161,18 +161,21 @@
 }
 
 .home-tbl,
-.user-reset-tbl {
+.user-reset-tbl,
+.event-list-tbl {
   width: 90%;
   height: 120px;
 }
 
 .home-tbl,
 .user-reset-tbl,
+.event-list-tbl,
 th {
   margin-left: 50px;
   border: 1px solid #000;
   border-collapse: collapse;
 }
+
 th {
   font-size: 20px;
   height: 30px;
@@ -276,12 +279,45 @@ td {
 /* EVENT CSS */
 
 .wrapper-event {
-  min-height: 500px;
+  min-height: 100%;
   width: 1200px;
-  margin: 50px auto;
+  margin: 20px auto;
+  padding: 50px 50px;
   border: 1px solid var(--green-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.event__search-form {
+  margin: 0 auto;
+}
+
+.search-form {
+  display: inline-block;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-field .event-search-input {
+  line-height: 30px;
+  font-size: 18px;
+  width: 500px;
+  border: 1px solid var(--green-color);
+}
+.search-field .event-search-input:focus {
+  outline: var(--green-color);
+}
+
+.search-field .search-btn {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.event-list-tbl tbody td {
+  border-bottom: 1px solid #000;
 }
