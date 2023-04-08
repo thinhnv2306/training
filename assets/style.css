@@ -137,7 +137,7 @@
   text-decoration: none;
   font-size: 16px;
   color: white;
-  background-color: #92c3ff;
+  background-color: #3890fc;
   border: none;
   border-radius: 5px;
   text-transform: uppercase;
@@ -282,7 +282,7 @@ td {
   min-height: 100%;
   width: 1200px;
   margin: 20px auto;
-  padding: 50px 50px;
+  padding: 20px 50px 50px 50px;
   border: 1px solid var(--green-color);
   border-radius: 10px;
   display: flex;
@@ -318,6 +318,72 @@ td {
   cursor: pointer;
 }
 
+.search-result-count {
+  margin-left: 50px;
+}
+
+.delete_event_success {
+  color: green;
+}
+.delete_event_fail {
+  color: red;
+}
+
 .event-list-tbl tbody td {
   border-bottom: 1px solid #000;
+}
+
+.delete-btn {
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  background-color: #ff2323;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.edit-btn {
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  background-color: var(--green-color);
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.detail-btn {
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.schedule-btn {
+  background-color: rgb(250, 174, 10);
+}
+
+.comment-btn {
+  background-color: rgb(123, 8, 206);
 }
