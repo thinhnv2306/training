@@ -36,6 +36,14 @@ if (isset($_POST["search-btn"])) {
     $event_quantity = mysqli_fetch_row($query_count);
 }
 
+//Clear search keyword
+if (isset($_POST["clear-btn"])) {
+    $event_keyword = '';
+    $sql_count = "SELECT count(*) FROM events";
+    $query_count = mysqli_query($con, $sql_count);
+    $event_quantity = mysqli_fetch_row($query_count);
+}
+
 // Delete
 
 if (isset($_POST["delete-event"])) {
@@ -53,6 +61,11 @@ if (isset($_POST["delete-event"])) {
     $message_fail = '';
 }
 
+// Edit
+if (isset($_POST["edit-event"])) {
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,14 +81,21 @@ if (isset($_POST["delete-event"])) {
 
 <body>
     <div class="wrapper-event">
-        <h2>EVENT LIST</h2>
+        <header class="event-create-header">
+            <h2>EVENT LIST</h2>
+            <a class="back-homepage" href="../../index.php">
+                < Homepage</a>
+        </header>
         <div class="event__search-form">
             <label for="event-search-label">Keyword:</label>
             <form class="search-form" action="<?php $_SERVER["PHP_SELF"];?>" method="POST">
                 <div class="search-field">
                     <input class="event-search-input" type="text" name="event-keyword"
                         value="<?php echo $event_keyword ?? '' ?>">
-                    <input class="search-btn" type="submit" name="search-btn" value="Search">
+                    <div class="search-area-btn">
+                        <input class="search-btn hover" type="submit" name="search-btn" value="Search">
+                        <input class="clear-btn" type="submit" name="clear-btn" value="Clear">
+                    </div>
                 </div>
             </form>
         </div>
@@ -87,6 +107,8 @@ if (isset($_POST["delete-event"])) {
     echo "<p class='delete_event_fail'>" . $message_fail . "</p>";
 }
 ?>
+
+        <a class="add-event-btn hover" href="eventCreate.php">CREATE EVENT</a>
         <table class="event-list-tbl">
             <tr>
                 <th>No</th>
@@ -105,11 +127,12 @@ if (isset($_POST["delete-event"])) {
                     <td><?php echo "<p class='slogan'> " . $event["slogan"] . "</p>" ?></td>
                     <td><?php echo "<p class='leader'> " . $event["leader"] . "</p>" ?></td>
                     <td>
-                        <input type="submit" value="Delete" name="delete-event" class="delete-btn"
-                            onclick="return confirm('Are you sure you want to delete?')">
-                        <input type="submit" value="Edit" name="edit-event" class="edit-btn">
-                        <input type="submit" value="Schedule" name="schedule-detail" class="detail-btn schedule-btn">
-                        <input type="submit" value="Comment" name="comment-detail" class="detail-btn comment-btn">
+                        <input type="submit" value="Delete" name="delete-event" class="delete-btn hover"
+                            onclick="return confirm('Are you sure you want to delete event <?php echo $event['name'] ?>?')">
+                        <input type="submit" value="Edit" name="edit-event" class="edit-btn hover">
+                        <input type="submit" value="Schedule" name="schedule-detail"
+                            class="detail-btn schedule-btn hover">
+                        <input type="submit" value="Comment" name="comment-detail" class="detail-btn comment-btn hover">
                     </td>
                 </form>
             </tr>

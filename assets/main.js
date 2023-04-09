@@ -106,14 +106,50 @@ function checkValidateInputPass(event) {
         reset_button.style = "opacity: 1; cursor: pointer";
     }
 
+}
 
-    // var password_input = document.querySelector("input");
-    // console.log(password_input)
+function checkValidateEvent() {
+    //input elemnent
+    var event_name = document.getElementById("event-name").value;
+    var slogan = document.getElementById("slogan").value;
+    var leader = document.getElementById("leader").value;
+    var description = document.getElementById("description").value;
+    var event_submit = document.getElementById("event-submit-btn");
 
-    // // var password = document.querySelector(".password-input").value;
-    // var reset_btn = document.getElementById("reset-pass-btn");
-    // console.log(event);
-    // 
+    //element to insert error message
+    var eventnameDiv = document.getElementById("event-name-input");
+    var sloganDiv = document.getElementById("slogan-input");
+    var leaderDiv = document.getElementById("leader-input");
+    var descriptionDiv = document.getElementById("description-input");
+    var avatarDiv = document.getElementById("avatar-input");
 
+    //reference node 
+
+    var eventnameLabel = document.getElementById("event-name-label");
+    var sloganLabel = document.getElementById("slogan-label");
+    var leaderLabel = document.getElementById("leader-label");
+    var descriptionLabel = document.getElementById("description-label");
+    var avatarLabel = document.getElementById("avatar-label");
+
+    // error message
+    const pElement = document.createElement('p');
+    pElement.classList.add("error-message", "event-error");
+
+    var errorElement = document.getElementsByClassName("error-message");
+
+    if (event_name != '') {
+        if (event_name.length > 100) {
+            pElement.innerText = "Event name needs to be fewer than 100 characters!";
+            eventnameDiv.insertBefore(pElement, eventnameLabel);
+        } else {
+            // errorElement.remove();
+        }
+    } else {
+        var err = document.querySelectorAll(".error-message");
+        err.remove();
+        pElement.innerText = "Event name can't be blank!";
+        eventnameDiv.insertBefore(pElement, eventnameLabel);
+
+    }
 
 }
