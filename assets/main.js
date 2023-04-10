@@ -137,19 +137,24 @@ function checkValidateEvent() {
 
     var errorElement = document.getElementsByClassName("error-message");
 
+
     if (event_name != '') {
+
         if (event_name.length > 100) {
+            if (errorElement.length > 0) {
+
+            }
             pElement.innerText = "Event name needs to be fewer than 100 characters!";
             eventnameDiv.insertBefore(pElement, eventnameLabel);
-        } else {
-            // errorElement.remove();
         }
+
     } else {
-        var err = document.querySelectorAll(".error-message");
-        err.remove();
-        pElement.innerText = "Event name can't be blank!";
-        eventnameDiv.insertBefore(pElement, eventnameLabel);
+        if (errorElement.length > 0) {
+            pElement.innerText = "Event name can't be blank!";
+        } else {
+            pElement.innerText = "Event name can't be blank!";
+            eventnameDiv.insertBefore(pElement, eventnameLabel);
+        }
 
     }
-
 }
