@@ -139,13 +139,13 @@ function checkValidateEvent() {
 
 
     if (event_name != '') {
-
         if (event_name.length > 100) {
             if (errorElement.length > 0) {
-
+                pElement.innerText = "Event name needs to be fewer than 100 characters!";
+            } else {
+                pElement.innerText = "Event name needs to be fewer than 100 characters!";
+                eventnameDiv.insertBefore(pElement, eventnameLabel);
             }
-            pElement.innerText = "Event name needs to be fewer than 100 characters!";
-            eventnameDiv.insertBefore(pElement, eventnameLabel);
         }
 
     } else {
