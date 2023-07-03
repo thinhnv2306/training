@@ -459,7 +459,7 @@ td {
 
 .event-create-wrapper {
   width: 960px;
-  height: 100%;
+  min-height: 600px;
   margin: 30px auto;
 }
 

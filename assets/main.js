@@ -108,55 +108,68 @@ function checkValidateInputPass(event) {
 
 }
 
-function checkValidateEvent() {
-    //input elemnent
+function checkValidateEvent(event) {
+    //input element
     var event_name = document.getElementById("event-name").value;
     var slogan = document.getElementById("slogan").value;
     var leader = document.getElementById("leader").value;
     var description = document.getElementById("description").value;
     var event_submit = document.getElementById("event-submit-btn");
 
-    //element to insert error message
-    var eventnameDiv = document.getElementById("event-name-input");
-    var sloganDiv = document.getElementById("slogan-input");
-    var leaderDiv = document.getElementById("leader-input");
-    var descriptionDiv = document.getElementById("description-input");
-    var avatarDiv = document.getElementById("avatar-input");
 
-    //reference node 
+    //error message
+    var event_name_message = document.getElementById("event-name-error-message");
+    var slogan_message = document.getElementById("slogan-error-message");
+    var leader_message = document.getElementById("leader-error-message");
+    var description_message = document.getElementById("description-error-message");
 
-    var eventnameLabel = document.getElementById("event-name-label");
-    var sloganLabel = document.getElementById("slogan-label");
-    var leaderLabel = document.getElementById("leader-label");
-    var descriptionLabel = document.getElementById("description-label");
-    var avatarLabel = document.getElementById("avatar-label");
-
-    // error message
-    const pElement = document.createElement('p');
-    pElement.classList.add("error-message", "event-error");
-
-    var errorElement = document.getElementsByClassName("error-message");
-
-
-    if (event_name != '') {
-        if (event_name.length > 5) {
-            if (errorElement.length > 0) {
-                if ((errorElement.item(0).innerText == "Event name can't be blank!")) {
-                    errorElement.item(0).innerText = "Event name needs to be fewer than 100 characters!";
-                };
+    // console.log(event.target.name);
+    if (event.target.name == 'event-name') {
+        if (event_name != '') {
+            if (event_name.length > 5) {
+                event_name_message.innerText = "Event name needs to be fewer than 100 characters!";
+                event_name_message.style.display = "block";
             } else {
-                pElement.innerText = "Event name needs to be fewer than 100 characters!";
-                eventnameDiv.insertBefore(pElement, eventnameLabel);
+                if (event_name_message != '') {
+                    event_name_message.innerText = '';
+                }
             }
-        }
-
-    } else {
-        if (errorElement.length > 0) {
-            pElement.innerText = "Event name can't be blank!";
         } else {
-            pElement.innerText = "Event name can't be blank!";
-            eventnameDiv.insertBefore(pElement, eventnameLabel);
+            event_name_message.innerText = "Event name can't be blank!";
+            event_name_message.style.display = "block";
         }
-
+    } else if (event.target.name == 'slogan') {
+        if (slogan != '') {
+            if (slogan.length > 5) {
+                slogan_message.innerText = "Slogan needs to be fewer than 100 characters!";
+                slogan_message.style.display = "block";
+            } else {
+                if (slogan_message != '') {
+                    slogan_message.innerText = '';
+                }
+            }
+        } else {
+            slogan_message.innerText = "Slogan can't be blank!";
+            slogan_message.style.display = "block";
+        }
+    } else if (event.target.name == 'leader') {
+        if (leader != '') {
+            if (leader.length > 5) {
+                slogan_message.innerText = "Slogan needs to be fewer than 100 characters!";
+                slogan_message.style.display = "block";
+            } else {
+                if (slogan_message != '') {
+                    slogan_message.innerText = '';
+                }
+            }
+        } else {
+            slogan_message.innerText = "Slogan can't be blank!";
+            slogan_message.style.display = "block";
+        }
     }
+
+
+
+
+
 }
