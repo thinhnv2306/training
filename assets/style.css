@@ -58,6 +58,7 @@
 .error-message {
   color: red;
   display: block;
+  margin: 5px 0;
 }
 
 .submit-reset {
@@ -496,6 +497,11 @@ td {
 .event-error {
   text-align: center;
   font-size: 14px;
+  margin: 3px 0;
+}
+
+.mg-bt {
+  margin-bottom: 20px;
 }
 
 .event-name-input {

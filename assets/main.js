@@ -141,7 +141,7 @@ function checkValidateEvent(event) {
     } else if (event.target.name == 'slogan') {
         if (slogan != '') {
             if (slogan.length > 5) {
-                slogan_message.innerText = "Slogan needs to be fewer than 100 characters!";
+                slogan_message.innerText = "Slogan needs to be fewer than 250 characters!";
                 slogan_message.style.display = "block";
             } else {
                 if (slogan_message != '') {
@@ -155,16 +155,30 @@ function checkValidateEvent(event) {
     } else if (event.target.name == 'leader') {
         if (leader != '') {
             if (leader.length > 5) {
-                slogan_message.innerText = "Slogan needs to be fewer than 100 characters!";
-                slogan_message.style.display = "block";
+                leader_message.innerText = "Leader needs to be fewer than 250 characters!";
+                leader_message.style.display = "block";
             } else {
-                if (slogan_message != '') {
-                    slogan_message.innerText = '';
+                if (leader_message != '') {
+                    leader_message.innerText = '';
                 }
             }
         } else {
-            slogan_message.innerText = "Slogan can't be blank!";
-            slogan_message.style.display = "block";
+            leader_message.innerText = "Leader can't be blank!";
+            leader_message.style.display = "block";
+        }
+    } else if (event.target.name == 'description') {
+        if (description != '') {
+            if (description.length > 5) {
+                description_message.innerText = "Description needs to be fewer than 1000 characters!";
+                description_message.style.display = "block";
+            } else {
+                if (description_message != '') {
+                    description_message.innerText = '';
+                }
+            }
+        } else {
+            description_message.innerText = "Description can't be blank!";
+            description_message.style.display = "block";
         }
     }
 

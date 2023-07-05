@@ -26,33 +26,33 @@
         <div class="content">
             <form action="<?php $_SERVER["PHP_SELF"];?>" method="POST" enctype="multipart/form-data">
                 <div class="input-field-container">
-                    <div class="event-name-input" id="event-name-input">
+                    <div class="mg-bt event-name-input" id="event-name-input">
                         <p class="error-message" id="event-name-error-message" style="display:none;text-align:center">
                         </p>
                         <label class="event-label" id="event-name-label" for="">Event name</label>
                         <input type="text" name="event-name" class="event-name event-input" id="event-name"
                             onblur="checkValidateEvent(event)">
                     </div>
-                    <div class="slogan-input" id="slogan-input">
+                    <div class="mg-bt slogan-input" id="slogan-input">
                         <p class="error-message" id="slogan-error-message" style="display:none;text-align:center"></p>
                         <label class="event-label" id="logan-label" for="">Slogan</label>
                         <input type="text" name="slogan" class="slogan event-input" id="slogan"
                             onblur="checkValidateEvent(event)">
                     </div>
-                    <div class="leader-input" id="leader-input">
+                    <div class="mg-bt leader-input" id="leader-input">
                         <p class="error-message" id="leader-error-message" style="display:none;text-align:center"></p>
                         <label class="event-label" id="leader-label" for="">Leader</label>
                         <input type="text" name="leader" class="leader event-input" id="leader"
                             onblur="checkValidateEvent(event)">
                     </div>
-                    <div class="description-input" id="description-input">
+                    <div class="mg-bt description-input" id="description-input">
                         <p class="error-message" id="description-error-message" style="display:none;text-align:center">
                         </p>
                         <label class="event-label" id="description-label" for="">Description</label>
                         <textarea name="description" class="description event-input" id="description" rows="5" cols="50"
                             onblur="checkValidateEvent(event)"></textarea>
                     </div>
-                    <div class="avatar-input" id="avatar-input">
+                    <div class="mg-bt avatar-input" id="avatar-input">
                         <label class="event-label" id="avatar-label" for="">Avatar</label>
                         <label class="img-label" for="avatar-img">
                             <i class="fa-regular fa-image"></i>
